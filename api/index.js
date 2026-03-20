@@ -13,6 +13,17 @@ app.use(cors());
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const TMDB_BEARER_TOKEN = process.env.TMDB_BEARER_TOKEN;
 
+app.get("/", (req, res) => {
+  res.send(`
+    <h1>TMDB Proxy API 🚀</h1>
+    <p>Available endpoints:</p>
+    <ul>
+      <li>/movies/popular</li>
+      <li>/movies/search?query=batman</li>
+    </ul>
+  `);
+});
+
 app.get("/movies/popular", async (req, res) => {
   try {
     const response = await fetch(
