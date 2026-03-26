@@ -1,15 +1,17 @@
-# Exported from Render on 2026-03-26T10:19:30Z
+# Exported from Render on 2026-03-26T10:20:04Z
 version: "1"
 services:
 - type: web
-  name: videasyscr
+  name: tmdb-proxy
   runtime: node
-  repo: https://github.com/matrSid/videasy-scraper
+  repo: https://github.com/matrSid/tmdb-proxy
   plan: free
   envVars:
-  - key: PROXY_URL
+  - key: TMDB_BEARER_TOKEN
+    sync: false
+  - key: TMDB_API_KEY
     sync: false
   region: singapore
   buildCommand: npm install
-  startCommand: node server.js
+  startCommand: npm start
   autoDeployTrigger: commit
